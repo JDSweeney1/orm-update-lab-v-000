@@ -41,6 +41,7 @@ class Student
       DB[:conn].execute(sql, self.name, self.grade)
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     end
+  end
 
   def self.create(name:, album:)
     song = Song.new(name, album)
@@ -53,7 +54,7 @@ class Student
     result = DB[:conn].execute(sql, name)[0]
     Song.new(result[0], result[1], result[2])
   end
-  end
+end
 
 
 end
